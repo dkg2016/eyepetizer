@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <router-link to="/allrec">推荐</router-link>
-    <router-link to="/discovery">发现</router-link>
-    <router-link to="/feed">日报</router-link>
-    <router-link to="/rec">社区</router-link>
-
+    <m-header/>
+    <tab/>
     <router-view></router-view>
   </div>
 </template>
 
-<script>
+<script type="text/exmascript-6">
+import MHeader from './components/m-header/m-header'
+import Tab from './components/tab/tab'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    MHeader,
+    Tab
+  }
 }
 </script>
 

@@ -10,25 +10,9 @@ module.exports = {
   "extends": "eslint:recommended",
   "parserOptions": {
       "ecmaVersion": 6,
-      "ecmaFeatures": {
-          "jsx": false
-      },
+      "parser": "babel-eslint",
       "sourceType": "module"
   },
-  // 声明全局变量
-  "globals":{
-      "$": true,
-      "nw": true,
-      "printer": true,
-      "LIZI": true,
-      "NALA": true,
-      "pageData": true,
-      "PageData": true,
-      "define": true,
-      "require": true,
-      "NProgress": true
-  },
-
   // 0：关闭，1：警告，2：禁止   或者：off/warn/error
   "rules": {
       "no-cond-assign": 2,  // 禁止：在条件表达式中使用赋值语句
