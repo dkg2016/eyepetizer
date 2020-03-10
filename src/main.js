@@ -1,14 +1,17 @@
-import Vue from 'vue';
-import App from './App.vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+import Vue from 'vue'
+import App from './App.vue'
+import ajax from './ajax/index'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
-import routes from './router';
-const router = new VueRouter(routes);
+import routes from './router'
+const router = new VueRouter(routes)
 
-import './assets/css/reset.css';
+import './assets/css/reset.css'
 
-Vue.config.productionTip = false;
+Vue.prototype.$ajax = ajax
+
+Vue.config.productionTip = false
 
 new Vue({
   router,

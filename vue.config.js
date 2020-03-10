@@ -7,7 +7,7 @@ module.exports = {
   devServer: {
     before: function(app) {
       // 首页 推荐
-      app.get('/api/allRec', function(req, res) {
+      app.get('/api/recommend', function(req, res) {
         let url = baseUrl + '/v5/index/tab/allRec';
         axios.get(url,comonParams).then(response => {
           res.json(response.data);

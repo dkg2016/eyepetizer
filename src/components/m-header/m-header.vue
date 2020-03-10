@@ -14,7 +14,8 @@ export default {}
   position relative
   height 44px
   text-align center
-  color #000
+  color #fff
+  background-color #000
   font-size 0
   .text
     display inline-block

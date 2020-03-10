@@ -3,11 +3,11 @@ let routerSet = {
   routes: [
     {
       path: '/',
-      redirect: '/allrec'
+      redirect: '/recommend'
     },
     {
-      path: '/allrec',
-      component: resolve => require(['@/pages/allrec'], resolve)
+      path: '/recommend',
+      component: resolve => require(['@/pages/recommend'], resolve)
     },
     {
       path: '/discovery',
@@ -18,12 +18,12 @@ let routerSet = {
       component: resolve => require(['@/pages/feed'], resolve)
     },
     {
-      path: '/rec',
-      component: resolve => require(['@/pages/rec'], resolve)
+      path: '/group',
+      component: resolve => require(['@/pages/group'], resolve)
     },
     {
       path: '*',
-      redirect: '/allrec'
+      redirect: '/recommend'
     }
   ]
 };

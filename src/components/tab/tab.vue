@@ -1,6 +1,6 @@
 <template>
   <div class="tab">
-    <router-link tag="div" class="tab-item" to="/allrec">
+    <router-link tag="div" class="tab-item" to="/recommend">
       <span class="tab-link">推荐</span>
     </router-link>
     <router-link tag="div" class="tab-item" to="/discovery">
@@ -9,7 +9,7 @@
     <router-link tag="div" class="tab-item" to="/feed">
       <span class="tab-link">日报</span>
     </router-link>
-    <router-link tag="div" class="tab-item" to="/rec">
+    <router-link tag="div" class="tab-item" to="/group">
       <span class="tab-link">社区</span>
     </router-link>
   </div>
@@ -27,6 +27,7 @@ export default {
   height 44px
   line-height 44px
   font-size 14px
+  background-color #f5f6f7
   .tab-item
     flex 1
     text-align center
