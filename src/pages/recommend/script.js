@@ -1,5 +1,5 @@
 import Scroll from '@/components/scroll/scroll.vue'
-
+import { formatTime } from '@/common/util'
 export default {
   data() {
     return {
@@ -14,6 +14,10 @@ export default {
     this.getRecommend();
   },
 
+  computed: {
+    
+  },
+
   methods: {
     getRecommend() {
       this.$ajax({
@@ -23,6 +27,10 @@ export default {
         this.topVideoInfo = data[0].data
         this.dataList = data
       })
+    },
+
+    duration: function (val) {
+      return formatTime(val)
     }
   },
 
