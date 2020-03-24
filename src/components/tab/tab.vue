@@ -27,6 +27,7 @@ export default {
   height 44px
   line-height 44px
   font-size 14px
+  font-weight bold
   background-color #f5f6f7
   .tab-item
     flex 1
