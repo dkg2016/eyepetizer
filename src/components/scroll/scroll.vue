@@ -12,6 +12,10 @@ export default {
     data: {
       type: Array,
       default: () => []
+    },
+    click: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -26,7 +30,9 @@ export default {
       if (!this.$refs.wrapper) {
         return;
       }
-      this.scroll = new BScroll(this.$refs.wrapper)
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        click: this.click
+      })
     },
 
     refresh() {

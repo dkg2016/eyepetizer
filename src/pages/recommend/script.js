@@ -3,10 +3,7 @@ import { formatTime } from '@/common/util'
 export default {
   data() {
     return {
-      dataList: [],
-      topVideoInfo: {
-        itemList: []
-      }
+      dataList: []
     }
   },
 
@@ -14,18 +11,13 @@ export default {
     this.getRecommend();
   },
 
-  computed: {
-    
-  },
-
   methods: {
     getRecommend() {
       this.$ajax({
         url: '/api/recommend'
       }).then(res => {
-        let data = res.data.itemList || []
-        this.topVideoInfo = data[0].data
-        this.dataList = data
+        this.dataList = res.data.itemList || []
+        this.$refs.scroll.refresh()
       })
     },
 
