@@ -14,7 +14,8 @@ export default {
   methods: {
     getRecommend() {
       this.$ajax({
-        url: '/api/recommend'
+        method: 'GET',
+        url: '/api/home/allRec'
       }).then(res => {
         this.dataList = res.data.itemList || []
         this.$refs.scroll.refresh()
@@ -23,7 +24,7 @@ export default {
 
     duration: function (val) {
       return formatTime(val)
-    }
+    } 
   },
 
   components: {

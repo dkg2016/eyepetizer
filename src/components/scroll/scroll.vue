@@ -31,7 +31,8 @@ export default {
         return;
       }
       this.scroll = new BScroll(this.$refs.wrapper, {
-        click: this.click
+        click: this.click,
+        mouseWheel: true
       })
     },
 
