@@ -10,18 +10,60 @@
               <span class="title">{{item.data.text}}</span>
               <span class="right_text">{{item.data.rightText + ' >'}}</span>
             </template>
+
             <!-- 左类型 -->
             <template v-if="item.data.dataType === 'TextCard'">
               <span class="title">{{item.data.text}} <em> ></em></span>
               <span class="right_btn">+关注</span>
             </template>
+
             <!-- 右类型 -->
             <template v-if="item.data.dataType === 'TextCardWithTagId'">
+              <span class="mid_btn">刷新推荐</span>
               <span></span>
               <span class="right_text">{{item.data.text + ' >'}}</span>
             </template>
           </div>
+          <!-- 社区精选-->
+          <div v-if="item.type === 'ugcSelectedCardCollection'">
+            <div class="text_card" v-if="item.data.dataType === 'ItemCollection'">
+              <span class="title">{{item.data.header.title}}</span>
+              <span class="right_text">{{item.data.header.rightText + ' >'}}</span>
+            </div>
+            <div class="select_card">
+              <div class="left">
+                <div class="wrap" :style="{backgroundImage: 'url(' + item.data.itemList[0].data.cover.feed + ')'}">
+                  <div class="info">
+                    <span class="usercover">
+                      <img :src="item.data.itemList[0].data.userCover" alt="">
+                    </span>
+                    <span class="nickname">{{item.data.itemList[0].data.nickname}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <div class="wrap" :style="{backgroundImage: 'url(' + item.data.itemList[1].data.url + ')'}">
+                  <div class="info">
+                    <span class="usercover">
+                      <img :src="item.data.itemList[1].data.userCover" alt="">
+                    </span>
+                    <span class="nickname">{{item.data.itemList[1].data.nickname}}</span>
+                  </div>
+                </div>
+                <div class="wrap" :style="{backgroundImage: 'url(' + item.data.itemList[2].data.url + ')'}">
+                  <div class="info">
+                    <span class="usercover">
+                      <img :src="item.data.itemList[2].data.userCover" alt="">
+                    </span>
+                     <span class="nickname">{{item.data.itemList[2].data.nickname}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- 内容 -->
+          <!-- 每日推荐 -->
           <div v-if="item.type === 'followCard'" class="card">
             <div v-if="item.data.dataType === 'FollowCard'" class="follow_card">
               <div class="top">
@@ -82,28 +124,43 @@ export default script;
     overflow hidden
     .box
       .text_card
-        height 50px
+        position relative
+        height 46px
         display flex
         justify-content space-between
         align-items center
         .title
-          height 50px
-          line-height 50px
+          height 46px
+          line-height 46px
           font-size 16px
           font-weight bold
           em
             font-size 12px
             color #999
             vertical-align top
+        .mid_btn
+          position absolute
+          width 80px
+          height 26px
+          line-height 26px
+          left 50%
+          margin-left -40px 
+          text-align center
+          background-color #4587d7
+          border-radius 30px
+          color #fff
+          font-weight bold
+          font-size 14px
         .right_text
           font-size 12px
           color #4587d7
+          font-weight bold
         .right_btn
           height 18px
           line-height 18px
           text-align center
           width 40px
-          border solid #999 1px
+          border solid #777 1px
           border-radius 4px
           font-size 10px
           font-weight bold
@@ -171,4 +228,46 @@ export default script;
             .cate
               color #c2c2c2
               font-size 12px
+      .select_card
+        display flex
+        border-radius 4px
+        overflow hidden
+        .left
+          width 55%
+          margin-right 2px
+          .wrap
+            height 200px
+        .right
+          width 45%
+          .wrap
+            height 99px
+            margin-bottom 2px
+        .left, .right
+          .wrap
+            position relative
+            background-size cover
+            background-position-y: 50%;
+            .info
+              position absolute
+              bottom 4px
+              right 4px
+              .usercover
+                display inline-block
+                vertical-align middle 
+                width 20px
+                height 20px
+                text-align center
+                background-color #fff
+                border-radius 50%
+                img
+                  margin-top 2px
+                  width 16px
+                  height 16px
+                  border-radius 50%
+              .nickname
+                display inline-block
+                vertical-align middle 
+                color #fff
+                font-size 12px
+                margin-left 4px
 </style>
