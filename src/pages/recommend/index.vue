@@ -3,7 +3,8 @@
     <scroll ref="scroll" class="recommend_content" :data="dataList">
       <div>
         <div v-for="(item,index) in dataList" :key="index" class="box">
-          <!-- 标题类型 -->
+          
+          <!-- 标题 -->
           <div v-if="item.type === 'textCard'" class="text_card">
             <!-- 左右类型 -->
             <template v-if="item.data.dataType === 'TextCardWithRightAndLeftTitle'">
@@ -24,6 +25,49 @@
               <span class="right_text">{{item.data.text + ' >'}}</span>
             </template>
           </div>
+
+          <!-- 每日推荐 -->
+          <div v-if="item.type === 'followCard'" class="card">
+            <div v-if="item.data.dataType === 'FollowCard'" class="follow_card">
+              <div class="top">
+                <img class="cover" :src="item.data.content.data.cover.feed" alt="">
+                <div class="duration">{{duration(item.data.content.data.duration)}}</div>
+              </div>
+              <div class="bottom">
+                <div class="author">
+                  <img class="avatar" :src="item.data.content.data.author.icon" alt="">
+                </div>
+                <div class="desc">
+                  <p class="title">{{item.data.header.title}}</p>
+                  <p class="cate">{{item.data.content.data.author.name}} / #{{item.data.content.data.category}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 资讯 -->
+          <div v-if="item.type === 'informationCard'" class="card">
+            <div v-if="item.data.dataType === 'InformationCard'" class="info_card">
+              <img class="bg_img" :src="item.data.backgroundImage" alt="">
+              <div class="title_wrap">
+                <ul>
+                  <li v-for="(title,idx) in item.data.titleList" :key="idx">{{title}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 一条视频 -->
+          <div v-if="item.type === 'videoSmallCard'" class="card">
+            <div v-if="item.data.dataType === 'VideoBeanForClient'" class="video_bean">
+              <img class="l_img" :src="item.data.cover.feed" alt="">
+              <div class="r_content">
+                <p class="title">{{item.data.title}}</p>
+                <p class="cate">#{{item.data.category}}</p>
+              </div>
+            </div>
+          </div>
+
           <!-- 社区精选-->
           <div v-if="item.type === 'ugcSelectedCardCollection'">
             <div class="text_card" v-if="item.data.dataType === 'ItemCollection'">
@@ -62,42 +106,21 @@
             </div>
           </div>
 
-          <!-- 内容 -->
-          <!-- 每日推荐 -->
-          <div v-if="item.type === 'followCard'" class="card">
-            <div v-if="item.data.dataType === 'FollowCard'" class="follow_card">
-              <div class="top">
-                <img class="cover" :src="item.data.content.data.cover.feed" alt="">
-                <div class="duration">{{duration(item.data.content.data.duration)}}</div>
-              </div>
-              <div class="bottom">
-                <div class="author">
-                  <img class="avatar" :src="item.data.content.data.author.icon" alt="">
-                </div>
-                <div class="desc">
-                  <p class="title">{{item.data.header.title}}</p>
-                  <p class="cate">{{item.data.content.data.author.name}} / #{{item.data.content.data.category}}</p>
-                </div>
-              </div>
+          <!-- banner -->
+          <div v-if="item.type === 'banner'" class="card">
+            <div class="banner_wrap">
+              <img :src="item.data.image" alt="">
             </div>
           </div>
-          <div v-if="item.type === 'informationCard'" class="card">
-            <div v-if="item.data.dataType === 'InformationCard'" class="info_card">
-              <img class="bg_img" :src="item.data.backgroundImage" alt="">
-              <div class="title_wrap">
-                <ul>
-                  <li v-for="(title,idx) in item.data.titleList" :key="idx">{{title}}</li>
-                </ul>
-              </div>
+
+          <!-- 推荐创作 -->
+          <div v-if="item.type === 'briefCard'" class="brief_card">
+            <div class="b_img">
+              <img :src="item.data.icon" alt="">
             </div>
-          </div>
-          <div v-if="item.type === 'videoSmallCard'" class="card">
-            <div v-if="item.data.dataType === 'VideoBeanForClient'" class="video_bean">
-              <img class="l_img" :src="item.data.cover.feed" alt="">
-              <div class="r_content">
-                <p class="title">{{item.data.title}}</p>
-                <p class="cate">#{{item.data.category}}</p>
-              </div>
+            <div class="b_desc">
+              <div class="title">{{item.data.title}}</div>
+              <div class="desc">{{item.data.description}}</div>
             </div>
           </div>
         </div>
@@ -203,11 +226,12 @@ export default script;
         .info_card
           .bg_img
             width 100%
-            border-radius 4px
+            border-radius 4px 4px 0 0
           .title_wrap
             padding 12px
             margin-top -2px
             background-color #ededed
+            border-radius 0 0 4px 4px
             li
               padding-bottom 12px
               font-size 12px
@@ -216,6 +240,7 @@ export default script;
           display flex
           .l_img
             width 130px
+            height 75px
             margin-right 14xp
             border-radius 4px
           .r_content
@@ -270,4 +295,33 @@ export default script;
                 color #fff
                 font-size 12px
                 margin-left 4px
+      .banner_wrap
+        overflow hidden
+        img 
+          border-radius 4px
+          width 100%
+      .brief_card
+        display flex
+        padding 10px 0
+        border-bottom solid #eee 1px
+        .b_img
+          width 50px
+          height 50px
+          border-radius 4px
+          overflow hidden
+          img 
+            height 100%
+            margin-left -10px
+        .b_desc
+          padding-left 10px
+          display flex
+          flex-direction column
+          justify-content center
+          .title
+            font-weight bold
+            font-size 14px
+            margin-bottom 4px
+            line-height 16px
+          .desc
+            font-size 10px
 </style>
