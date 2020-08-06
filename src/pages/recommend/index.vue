@@ -36,11 +36,13 @@
               <div class="bottom">
                 <div class="author">
                   <img class="avatar" :src="item.data.content.data.author.icon" alt="">
+                  <i class="iconfont iconjingxuan"></i>
                 </div>
                 <div class="desc">
                   <p class="title">{{item.data.header.title}}</p>
                   <p class="cate">{{item.data.content.data.author.name}} / #{{item.data.content.data.category}}</p>
                 </div>
+                <i class="iconfont iconshangchuan"></i>
               </div>
             </div>
           </div>
@@ -205,24 +207,39 @@ export default script;
               padding 3px
               border-radius 3px
           .bottom
+            position relative
             display flex
             margin-bottom: 8px
             padding 8px 0
             border-bottom: solid #eee 1px;
             .author
+              margin-right 12px
               .avatar
-                margin-right 12px
                 width 36px
                 height 36px
                 border-radius 50%
+                border solid #eee 2px
+              .iconjingxuan
+                margin-left -14px
+                color #4e6ef2
+                font-size 13px
             .desc
-              padding 4px 0
+              padding 4px 30px 4px 4px
+              overflow hidden
               .title
                 margin-bottom 6px
                 font-size 14px
+                overflow hidden
+                white-space nowrap
+                text-overflow ellipsis
               .cate
                 font-size 12px
                 color #888
+            .iconshangchuan
+              position absolute
+              top 20px
+              right 6px
+              font-size 20px
         .info_card
           .bg_img
             width 100%
