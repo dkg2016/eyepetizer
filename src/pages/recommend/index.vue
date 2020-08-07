@@ -5,22 +5,29 @@
         <div v-for="(item,index) in dataList" :key="index" class="box">
           
           <!-- 标题 -->
-          <div v-if="item.type === 'textCard'" class="text_card">
-            <!-- 左右类型 -->
-            <template v-if="item.data.dataType === 'TextCardWithRightAndLeftTitle'">
+          <div v-if="item.type === 'textCard'" class="text_card" :class="item.data.type.includes('footer') ? 'top_border':''">
+
+            <!-- 左 + 查看更多 -->
+            <template v-if="item.data.type === 'header7'">
               <span class="title">{{item.data.text}}</span>
-              <span class="right_text">{{item.data.rightText + ' >'}}</span>
+              <span class="right_text">{{item.data.rightText}}<em>&gt;</em></span>
             </template>
 
-            <!-- 左类型 -->
-            <template v-if="item.data.dataType === 'TextCard'">
+            <!-- 左 + 关注 -->
+            <template v-if="item.data.type === 'header5'">
               <span class="title">{{item.data.text}} <em> ></em></span>
-              <span class="right_btn">+关注</span>
+              <span v-if="item.data.follow" class="right_btn">+关注</span>
             </template>
 
-            <!-- 右类型 -->
-            <template v-if="item.data.dataType === 'TextCardWithTagId'">
+            <!-- 刷新 + 查看更多 -->
+            <template v-if="item.data.type === 'footer3'">
               <span class="mid_btn">刷新推荐</span>
+              <span></span>
+              <span class="right_text">{{item.data.text + ' >'}}</span>
+            </template>
+
+            <!-- 单右 查看更多 -->
+            <template v-if="item.data.type === 'footer2' && item.data.type === 'footer2'">
               <span></span>
               <span class="right_text">{{item.data.text + ' >'}}</span>
             </template>
@@ -122,7 +129,9 @@
             </div>
             <div class="b_desc">
               <div class="title">{{item.data.title}}</div>
-              <div class="desc">{{item.data.description}}</div>
+              <div class="desc">
+                <img v-if="item.data.dataType === 'TopicBriefCard'" class="icon_liwu" src="@/assets/images/liwu.png" alt="">
+                {{item.data.description}}</div>
             </div>
           </div>
         </div>
@@ -180,6 +189,9 @@ export default script;
           font-size 12px
           color #4587d7
           font-weight bold
+          em
+            margin-left 6px
+            font-size 10px
         .right_btn
           height 18px
           line-height 18px
@@ -189,6 +201,8 @@ export default script;
           border-radius 4px
           font-size 10px
           font-weight bold
+      .top_border
+        border-top solid #eee 1px
       .card
         .follow_card
           .top
@@ -229,6 +243,7 @@ export default script;
               .title
                 margin-bottom 6px
                 font-size 14px
+                font-weight bold
                 overflow hidden
                 white-space nowrap
                 text-overflow ellipsis
@@ -240,6 +255,8 @@ export default script;
               top 20px
               right 6px
               font-size 20px
+              color #888
+              font-weight bold
         .info_card
           .bg_img
             width 100%
@@ -250,8 +267,9 @@ export default script;
             background-color #ededed
             border-radius 0 0 4px 4px
             li
-              padding-bottom 12px
+              padding-bottom 8px
               font-size 12px
+              line-height 16px
         .video_bean
           margin-bottom 14px
           display flex
@@ -274,6 +292,9 @@ export default script;
         display flex
         border-radius 4px
         overflow hidden
+        padding-bottom 8px
+        margin-bottom 12px
+        border-bottom solid #eee 1px
         .left
           width 55%
           margin-right 2px
@@ -314,6 +335,9 @@ export default script;
                 margin-left 4px
       .banner_wrap
         overflow hidden
+        padding-bottom 6px
+        margin-bottom 12px
+        border-bottom solid #eee 1px
         img 
           border-radius 4px
           width 100%
@@ -341,4 +365,7 @@ export default script;
             line-height 16px
           .desc
             font-size 10px
+            .icon_liwu
+              width 18px
+              vertical-align text-top
 </style>
