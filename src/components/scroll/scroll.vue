@@ -32,12 +32,27 @@ export default {
       }
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
-        mouseWheel: true
+        mouseWheel: true,
+        pullDownRefresh: {
+          threshold: 50,
+          stop: 0
+        }
       })
+
+      this.scroll.on('pullingDown',()=>{
+        this.$emit('pullDown')
+        setTimeout(() => {
+          this.scroll.finishPullDown()
+        },2000)
+      }) 
     },
 
     refresh() {
       this.scroll && this.scroll.refresh()
+    },
+
+    pullingDown: function () {
+      console.log('pull down')
     }
   },
 

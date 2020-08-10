@@ -1,5 +1,7 @@
 import Scroll from '@/components/scroll/scroll.vue'
-import { formatTime } from '@/common/util'
+import allTitle from '@/components/allTitle/allTitle.vue'
+import pickedVideo from '@/components/pickedVideo/pickedVideo.vue'
+import myVideo from '@/components/myVideo/myVideo.vue'
 export default {
   data() {
     return {
@@ -12,7 +14,7 @@ export default {
   },
 
   methods: {
-    getRecommend() {
+    getRecommend () {
       this.$ajax({
         method: 'GET',
         url: '/api/home/allRec'
@@ -22,12 +24,15 @@ export default {
       })
     },
 
-    duration: function (val) {
-      return formatTime(val)
-    } 
+    pullDown () {
+      this.getRecommend();
+    }
   },
 
   components: {
-    Scroll
+    Scroll,
+    allTitle,
+    pickedVideo,
+    myVideo
   }
 }
