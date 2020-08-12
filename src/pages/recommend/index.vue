@@ -179,13 +179,13 @@ export default script;
         padding 10px 0
         border-bottom solid #eee 1px
         .b_img
-          width 50px
+          flex 50px 0 0
           height 50px
           border-radius 4px
           overflow hidden
           img 
             height 100%
-            margin-left -10px
+            margin-left -15px
         .b_desc
           padding-left 10px
           display flex

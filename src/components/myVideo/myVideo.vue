@@ -25,15 +25,17 @@ export default {
   .l_img
     width 130px
     height 75px
-    margin-right 14xp
+    margin-right 4px
     border-radius 4px
   .r_content
-    padding 10px
+    padding 6px 10px
     display flex
     flex-direction column
     justify-content space-between
     font-size 14px
     font-weight bold
+    .title
+      line-height 16px
     .cate
       color #c2c2c2
       font-size 12px
