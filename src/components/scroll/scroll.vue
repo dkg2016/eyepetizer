@@ -36,6 +36,9 @@ export default {
         pullDownRefresh: {
           threshold: 50,
           stop: 0
+        },
+        pullUpLoad: {
+          threshold: 500
         }
       })
 
@@ -44,7 +47,14 @@ export default {
         setTimeout(() => {
           this.scroll.finishPullDown()
         },2000)
-      }) 
+      })
+
+      this.scroll.on('pullingUp',()=>{
+        this.$emit('pullUp')
+        setTimeout(() => {
+          this.scroll.finishPullUp()
+        },2000)
+      })
     },
 
     refresh() {

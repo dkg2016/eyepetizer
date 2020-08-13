@@ -1,6 +1,6 @@
 <template>
   <div class="recommend">
-    <scroll ref="scroll" class="recommend_content" :data="dataList" @pullDown="pullDown">
+    <scroll ref="scroll" class="recommend_content" :data="dataList" @pullDown="pullDown" @pullUp="pullUp">
       <div>
         <div v-for="(item,index) in dataList" :key="index" class="box">
 

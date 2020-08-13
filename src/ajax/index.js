@@ -3,7 +3,7 @@ axios.defaults.baseURL = 'http://192.168.3.26:8000'
 
 let ajax = (options) => {
   return new Promise(resolve => {
-    let params = {}
+    let params = options.data || {}
     let config = {
       method: options.method || 'GET',
       url: options.url,
@@ -19,7 +19,7 @@ let ajax = (options) => {
       }],
       headers: {'Content-Type':'application/x-www-form-urlencoded'}
     }
-    if (options.method.toUpperCase === 'GET') {
+    if (options.method.toUpperCase() === 'GET') {
       config.params = params
       config.randomTime = new Date().getTime()
     }

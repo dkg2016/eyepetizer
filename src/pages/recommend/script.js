@@ -5,7 +5,8 @@ import myVideo from '@/components/myVideo/myVideo.vue'
 export default {
   data() {
     return {
-      dataList: []
+      dataList: [],
+      nextPageUrl: ''
     }
   },
 
@@ -20,12 +21,24 @@ export default {
         url: '/api/home/allRec'
       }).then(res => {
         this.dataList = res.data.itemList || []
+        this.nextPageUrl = res.data.nextPageUrl || ''
         this.$refs.scroll.refresh()
       })
     },
 
     pullDown () {
       this.getRecommend();
+    },
+
+    pullUp () {
+      if (this.nextPageUrl) {
+        console.log(this.nextPageUrl)
+        // this.$ajax({
+        //   method: 'GET',
+        //   url: '/api/home/allRec'
+        // })
+      }
+      console.log(234)
     }
   },
 

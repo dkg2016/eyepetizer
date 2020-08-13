@@ -21,3 +21,18 @@ export function formatTime (duration) {
     }
   }
 }
+
+export function parseQuery (url) {
+  let queryArr = url.split('?')
+  let queryStr= queryArr[1]
+  let tem = queryStr.split('&')
+  let obj = {}
+  tem.forEach(item => {
+    let idx = item.indexOf('=')
+    let key = item.substring(0,idx)
+    let value = item(idx,-1)
+    obj[key] = value
+  })
+
+  return obj
+}
