@@ -2,6 +2,7 @@ import Scroll from '@/components/scroll/scroll.vue'
 import allTitle from '@/components/allTitle/allTitle.vue'
 import pickedVideo from '@/components/pickedVideo/pickedVideo.vue'
 import myVideo from '@/components/myVideo/myVideo.vue'
+import { parseQuery } from '@/common/util'
 export default {
   data() {
     return {
@@ -32,13 +33,16 @@ export default {
 
     pullUp () {
       if (this.nextPageUrl) {
-        console.log(this.nextPageUrl)
-        // this.$ajax({
-        //   method: 'GET',
-        //   url: '/api/home/allRec'
-        // })
+        let params = parseQuery(this.nextPageUrl)
+        this.$ajax({
+          method: 'GET',
+          url: '/api/home/allRec',
+          data: params
+        }).then(res => {
+          this.dataList = this.dataList.concat(res.data.itemList || [])
+          this.nextPageUrl = res.data.nextPageUrl || ''
+        })
       }
-      console.log(234)
     }
   },
 

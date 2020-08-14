@@ -38,7 +38,7 @@ export default {
           stop: 0
         },
         pullUpLoad: {
-          threshold: 500
+          threshold: 50
         }
       })
 

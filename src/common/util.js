@@ -23,14 +23,17 @@ export function formatTime (duration) {
 }
 
 export function parseQuery (url) {
-  let queryArr = url.split('?')
-  let queryStr= queryArr[1]
-  let tem = queryStr.split('&')
+  if (!url || url.indexOf('?') < 0) {
+    return
+  }
+
+  let queryStr = url.split('?')[1]
+  let elems = queryStr.split('&')
   let obj = {}
-  tem.forEach(item => {
-    let idx = item.indexOf('=')
-    let key = item.substring(0,idx)
-    let value = item(idx,-1)
+  elems.forEach(el => {
+    let idx = el.indexOf('=')
+    let key = el.substring(0,idx)
+    let value = el.substring(idx+1)
     obj[key] = value
   })
 
