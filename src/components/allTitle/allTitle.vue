@@ -10,11 +10,19 @@
       </span>
     </template>
 
+    <template v-if="data.type === 'header8'">
+      <span class="title">{{data.text}}</span>
+      <span class="right_text">
+        {{data.rightText}}
+        <em>&gt;</em>
+      </span>
+    </template>
+
     <!-- header5 左 + 关注 -->
     <template v-if="data.type === 'header5'">
       <span class="title">
         {{data.text}}
-        <em>></em>
+        <em v-if="data.actionUrl">></em>
       </span>
       <span v-if="data.follow" class="right_btn">+关注</span>
     </template>
