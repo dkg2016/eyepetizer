@@ -19,7 +19,6 @@ export default {
         url: '/api/home/discovery'
       }).then(res => {
         this.dataList = res.data.itemList || []
-        this.$refs.scroll.refresh()
       })
     },
 

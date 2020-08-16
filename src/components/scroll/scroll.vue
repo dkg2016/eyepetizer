@@ -16,6 +16,18 @@ export default {
     click: {
       type: Boolean,
       default: true
+    },
+    scrollX: {
+      type: Boolean,
+      default: false
+    },
+    scrollY: {
+      type: Boolean,
+      default: true
+    },
+    eventPassthrough: {
+      type: String,
+      default: ''
     }
   },
 
@@ -27,9 +39,9 @@ export default {
 
   methods: {
     _initScroll() {
-      if (!this.$refs.wrapper) {
-        return;
-      }
+      // if (!this.$refs.wrapper) {
+      //   return;
+      // }
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: this.click,
         mouseWheel: true,
@@ -39,7 +51,10 @@ export default {
         },
         pullUpLoad: {
           threshold: 50
-        }
+        },
+        scrollX: this.scrollX,
+        scrollY: this.scrollY,
+        eventPassthrough: this.eventPassthrough
       })
 
       this.scroll.on('pullingDown',()=>{

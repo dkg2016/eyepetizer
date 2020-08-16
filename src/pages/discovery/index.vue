@@ -5,15 +5,27 @@
         <div v-for="(item,index) in dataList" :key="index" class="box">
 
           <!-- header & footer -->
-          <template v-if="item.type === 'textCard' || item.type === 'ugcSelectedCardCollection'">
+          <template v-if="item.type === 'textCard' || item.type === 'ugcSelectedCardCollection' || item.type === 'specialSquareCardCollection' || item.type === 'columnCardList'">
             <all-title :data="item.data"></all-title>
           </template>
+
+          <!-- 热门分类 -->
+          <div v-if="item.type === 'specialSquareCardCollection'" class="cate_outer">
+            <scroll ref="scrollX" :scrollX=true :scrollY=false eventPassthrough="horizen" :data="item.data.itemList">
+              <div class="cate_inner">
+                <div v-for="(cate, idx) in item.data.itemList" :key="idx" class="cate" :style="{backgroundImage: 'url(' + cate.data.image + ')'}">
+                  <span>{{cate.data.title}}</span>
+                </div>
+              </div>
+            </scroll>
+          </div>
           
           <!-- 一则视频 -->
           <div v-if="item.type === 'videoSmallCard'">
             <myVideo :data="item.data" />
           </div>
 
+          <!-- 推荐主题 -->
           <div v-if="item.type === 'briefCard'" class="brief_card">
             <div class="b_img">
               <img :src="item.data.icon" alt="">
@@ -62,6 +74,29 @@ export default script;
             padding-bottom 8px
             font-size 12px
             line-height 16px
+      .cate_outer
+        padding-bottom 5px
+        border-bottom solid #eee 1px
+        .cate_inner
+          display flex
+          flex-wrap wrap
+          justify-content space-between
+          width 636px
+          .cate
+            margin-bottom 5px
+            width 75px
+            height 75px
+            flex 75px 0 0
+            background-size 75px 75px
+            border-radius 4px
+            span 
+              display inline-block
+              width 100%
+              line-height 75px
+              text-align center
+              color #ffffff
+              font-size 12px
+              font-weight 700
       .brief_card
         display flex
         padding 10px 0
