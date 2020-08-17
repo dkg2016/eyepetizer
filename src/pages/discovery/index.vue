@@ -19,10 +19,23 @@
               </div>
             </scroll>
           </div>
+
+          <!-- 专题策划 -->
+          <div v-if="item.type === 'columnCardList'" class="column_card_wrap">
+            <div v-for="(card, idx) in item.data.itemList" :key="idx" class="card" :style="{backgroundImage: 'url(' + card.data.image + ')'}">
+              <span>{{card.data.title}}</span>
+            </div>
+          </div>
+
           
           <!-- 一则视频 -->
           <div v-if="item.type === 'videoSmallCard'">
             <myVideo :data="item.data" />
+          </div>
+
+          <!-- banner -->
+          <div v-if="item.type === 'banner'">
+            <banner :data="item.data" />
           </div>
 
           <!-- 推荐主题 -->
@@ -124,4 +137,27 @@ export default script;
             .icon_liwu
               width 18px
               vertical-align text-top
+      .column_card_wrap
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+        .card
+          margin-bottom 5px
+          width 49%
+          height 90px
+          background-size cover
+          border-radius 4px
+          background-repeat no-repeat
+          span 
+            display inline-block
+            box-sizing border-box
+            width 100%
+            line-height 14px
+            padding 31px 20px
+            text-align center
+            color #ffffff
+            font-size 14px
+            font-weight 700
+            border-radius 4px
+            background-color rgba(0,0,0,0.3)
 </style>

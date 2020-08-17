@@ -1,6 +1,8 @@
 import Scroll from '@/components/scroll/scroll.vue'
 import allTitle from '@/components/allTitle/allTitle.vue'
 import myVideo from '@/components/myVideo/myVideo.vue'
+import banner from '@/components/banner/banner.vue'
+
 export default {
   data() {
     return {
@@ -30,6 +32,7 @@ export default {
   components: {
     Scroll,
     allTitle,
-    myVideo
+    myVideo,
+    banner
   }
 }

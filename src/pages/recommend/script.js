@@ -2,6 +2,7 @@ import Scroll from '@/components/scroll/scroll.vue'
 import allTitle from '@/components/allTitle/allTitle.vue'
 import pickedVideo from '@/components/pickedVideo/pickedVideo.vue'
 import myVideo from '@/components/myVideo/myVideo.vue'
+import banner from '@/components/banner/banner.vue'
 import { parseQuery } from '@/common/util'
 export default {
   data() {
@@ -50,6 +51,7 @@ export default {
     Scroll,
     allTitle,
     pickedVideo,
-    myVideo
+    myVideo,
+    banner
   }
 }
