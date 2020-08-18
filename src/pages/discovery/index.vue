@@ -4,6 +4,12 @@
       <div>
         <div v-for="(item,index) in dataList" :key="index" class="box">
 
+          <div v-if="item.type === 'horizontalScrollCard'" class="horizen_scroll">
+            <div v-for="(pic, i) in item.data.itemList" :key="i" class="img_wrap">
+              <img :src="pic.data.image" alt="">
+            </div>
+          </div>
+
           <!-- header & footer -->
           <template v-if="item.type === 'textCard' || item.type === 'ugcSelectedCardCollection' || item.type === 'specialSquareCardCollection' || item.type === 'columnCardList'">
             <all-title :data="item.data"></all-title>
@@ -23,7 +29,9 @@
           <!-- 专题策划 -->
           <div v-if="item.type === 'columnCardList'" class="column_card_wrap">
             <div v-for="(card, idx) in item.data.itemList" :key="idx" class="card" :style="{backgroundImage: 'url(' + card.data.image + ')'}">
-              <span>{{card.data.title}}</span>
+              <div class="card_title">
+                <span>{{card.data.title}}</span>
+              </div>
             </div>
           </div>
 
@@ -68,11 +76,11 @@ export default script;
   width 100%
   top 44px
   bottom 0
-  padding 0 12px
   .discovery_content
     height 100%
     overflow hidden
     .box
+      padding 0 12px
       .info_card
         margin-bottom 12px
         .bg_img
@@ -148,16 +156,25 @@ export default script;
           background-size cover
           border-radius 4px
           background-repeat no-repeat
-          span 
-            display inline-block
-            box-sizing border-box
-            width 100%
-            line-height 14px
-            padding 31px 20px
-            text-align center
-            color #ffffff
-            font-size 14px
-            font-weight 700
+          .card_title
+            display flex
+            align-items center
+            height 100%
             border-radius 4px
+            overflow hidden
             background-color rgba(0,0,0,0.3)
+            span 
+              display inline-block
+              width 100%
+              text-align center
+              color #ffffff
+              font-size 14px
+              font-weight 700
+      .horizen_scroll
+        // padding 6px 12px
+        .img_wrap 
+          display inline-block
+          img 
+            height 200px
+            width 200px
 </style>
