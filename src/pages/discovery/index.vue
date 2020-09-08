@@ -10,7 +10,7 @@
 
           <!-- 轮播图 -->
           <div v-if="item.type === 'horizontalScrollCard'" class="swipper">
-            <scroll ref="scrollHorizon" :scrollX=true :scrollY=false eventPassthrough="horizen" :data="item.data.itemList">
+            <scroll ref="scrollHorizon" :scrollX=true :scrollY=false eventPassthrough="horizen" :data="item.data.itemList" class="swiper_scroll">
               <div class="swiper_wrap">
                 <div class="swiper_item" v-for="(pic, idx) in item.data.itemList" :key="idx">
                   <img :src="pic.data.image" alt="">
@@ -84,18 +84,21 @@ export default script;
     .box
       padding 0 12px
       .swipper
-        padding 0 12px
+        padding 12px
         margin 0 -12px
-        .swiper_wrap
-          display flex
-          justify-content space-between
-          width 3190px
-          .swiper_item
-            img
-              flex 375px 0 0
-              width 350px
-              height 206px
-              border-radius 4px
+        .swiper_scroll
+          padding-bottom 10px
+          border-bottom solid #eee 1px
+          .swiper_wrap
+            display flex
+            justify-content space-between
+            width 3190px
+            .swiper_item
+              img
+                flex 375px 0 0
+                width 350px
+                height 206px
+                border-radius 4px
       .info_card
         margin-bottom 12px
         .bg_img
