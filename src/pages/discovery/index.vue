@@ -3,11 +3,21 @@
     <scroll ref="scroll" class="discovery_content" :data="dataList" @pullDown="pullDown">
       <div>
         <div v-for="(item,index) in dataList" :key="index" class="box">
-
           <!-- header & footer -->
           <template v-if="item.type === 'textCard' || item.type === 'ugcSelectedCardCollection' || item.type === 'specialSquareCardCollection' || item.type === 'columnCardList'">
             <all-title :data="item.data"></all-title>
           </template>
+
+          <!-- 轮播图 -->
+          <div v-if="item.type === 'horizontalScrollCard'" class="swipper">
+            <scroll ref="scrollHorizon" :scrollX=true :scrollY=false eventPassthrough="horizen" :data="item.data.itemList">
+              <div class="swiper_wrap">
+                <div class="swiper_item" v-for="(pic, idx) in item.data.itemList" :key="idx">
+                  <img :src="pic.data.image" alt="">
+                </div>
+              </div>
+            </scroll>
+          </div>
 
           <!-- 热门分类 -->
           <div v-if="item.type === 'specialSquareCardCollection'" class="cate_outer">
@@ -68,11 +78,24 @@ export default script;
   width 100%
   top 44px
   bottom 0
-  padding 0 12px
   .discovery_content
     height 100%
     overflow hidden
     .box
+      padding 0 12px
+      .swipper
+        padding 0 12px
+        margin 0 -12px
+        .swiper_wrap
+          display flex
+          justify-content space-between
+          width 3190px
+          .swiper_item
+            img
+              flex 375px 0 0
+              width 350px
+              height 206px
+              border-radius 4px
       .info_card
         margin-bottom 12px
         .bg_img
@@ -90,6 +113,7 @@ export default script;
       .cate_outer
         padding-bottom 5px
         border-bottom solid #eee 1px
+        overflow hidden
         .cate_inner
           display flex
           flex-wrap wrap
