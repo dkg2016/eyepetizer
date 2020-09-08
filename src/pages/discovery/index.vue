@@ -33,7 +33,9 @@
           <!-- 专题策划 -->
           <div v-if="item.type === 'columnCardList'" class="column_card_wrap">
             <div v-for="(card, idx) in item.data.itemList" :key="idx" class="card" :style="{backgroundImage: 'url(' + card.data.image + ')'}">
-              <span>{{card.data.title}}</span>
+              <div class="card_title">
+                <span>{{card.data.title}}</span>
+              </div>
             </div>
           </div>
 
@@ -175,16 +177,25 @@ export default script;
           background-size cover
           border-radius 4px
           background-repeat no-repeat
-          span 
-            display inline-block
-            box-sizing border-box
-            width 100%
-            line-height 14px
-            padding 31px 20px
-            text-align center
-            color #ffffff
-            font-size 14px
-            font-weight 700
+          .card_title
+            display flex
+            align-items center
+            height 100%
             border-radius 4px
+            overflow hidden
             background-color rgba(0,0,0,0.3)
+            span 
+              display inline-block
+              width 100%
+              text-align center
+              color #ffffff
+              font-size 14px
+              font-weight 700
+      .horizen_scroll
+        // padding 6px 12px
+        .img_wrap 
+          display inline-block
+          img 
+            height 200px
+            width 200px
 </style>
