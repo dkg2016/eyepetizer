@@ -11,6 +11,9 @@ import './assets/css/reset.css'
 
 Vue.prototype.$ajax = ajax
 
+import videoPage from './components/videoPage'
+Vue.component('videoPage', videoPage)
+
 Vue.config.productionTip = false
 
 new Vue({

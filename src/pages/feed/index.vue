@@ -11,7 +11,8 @@
           
           <!-- 精选视频 -->
           <div v-if="item.type === 'followCard'">
-            <pickedVideo :data="item.data" />
+            <pickedVideo :data="item.data" @videoClick="videoClick" />
+            <videoPage :playUrl = item.data.content.data.playUrl />
           </div>
 
           <!-- 资讯 -->

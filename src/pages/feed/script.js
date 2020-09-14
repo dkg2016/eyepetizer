@@ -26,6 +26,10 @@ export default {
       })
     },
 
+    videoClick: function (playUrl) {
+      console.log(playUrl)
+    },
+
     pullDown () {
       this.getFeeds();
     },

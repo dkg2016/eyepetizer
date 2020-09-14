@@ -1,6 +1,6 @@
 <template>
   <div class="follow_card">
-    <div class="top">
+    <div class="top" @click="videoClick(data.content.data.playUrl)">
       <img class="cover" :src="data.content.data.cover.feed" alt="">
       <div class="duration">{{duration(data.content.data.duration)}}</div>
     </div>
@@ -30,7 +30,11 @@ export default {
   methods: {
     duration: function (val) {
       return formatTime(val)
-    } 
+    },
+
+    videoClick: function (playUrl) {
+      this.$emit('videoClick',playUrl)
+    }
   }
 };
 </script>
