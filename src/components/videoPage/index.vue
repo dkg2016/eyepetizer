@@ -18,6 +18,10 @@ export default {
 
 <style lang="stylus">
 .video_page
+  position absolute
+  top 0
+  bottom 0
+  z-index 9
   .video_wrap
     .video
       width 100%

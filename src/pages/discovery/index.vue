@@ -75,11 +75,7 @@ export default script;
 
 <style lang="stylus" scoped>
 .discovery
-  box-sizing border-box
-  position fixed
-  width 100%
-  top 44px
-  bottom 0
+  height 100%
   .discovery_content
     height 100%
     overflow hidden

@@ -97,11 +97,7 @@ export default script;
 
 <style lang="stylus" scoped>
 .recommend
-  box-sizing border-box
-  position fixed
-  width 100%
-  top 44px
-  bottom 0
+  height 100%
   padding 0 12px
   .recommend_content
     height 100%

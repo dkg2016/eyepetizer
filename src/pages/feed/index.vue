@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <scroll ref="scroll" class="recommend_content" :data="dataList" @pullDown="pullDown" @pullUp="pullUp">
+    <scroll ref="scroll" class="feed_content" :data="dataList" @pullDown="pullDown" @pullUp="pullUp">
       <div>
         <div v-for="(item,index) in dataList" :key="index" class="box">
 
@@ -12,7 +12,6 @@
           <!-- 精选视频 -->
           <div v-if="item.type === 'followCard'">
             <pickedVideo :data="item.data" @videoClick="videoClick" />
-            <videoPage :playUrl = item.data.content.data.playUrl />
           </div>
 
           <!-- 资讯 -->
@@ -39,13 +38,9 @@ export default script;
 
 <style lang="stylus" scoped>
 .feed
-  box-sizing border-box
-  position fixed
-  width 100%
-  top 44px
-  bottom 0
+  height 100%
   padding 0 12px
-  .recommend_content
+  .feed_content
     height 100%
     overflow hidden
     .box

@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <tab/>
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
+    <bottomTab/>
   </div>
 </template>
 
-<script type="text/exmascript-6">
-import Tab from './components/tab/tab'
+<script>
+import bottomTab from './components/bottomTab/bottomTab'
 export default {
   name: 'app',
   components: {
-    Tab
+    bottomTab
   }
 }
 </script>
